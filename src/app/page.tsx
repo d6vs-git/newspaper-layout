@@ -79,7 +79,7 @@ export default function NewspaperEditor() {
           const value = computedStyle.getPropertyValue(prop);
           if (value && value.trim() && value !== 'transparent' && value !== 'rgba(0, 0, 0, 0)') {
             // Force the computed color value onto the element
-            (el.style as any)[prop] = value;
+            el.style.setProperty(prop, value);
           }
         });
 
@@ -122,7 +122,7 @@ export default function NewspaperEditor() {
           URL.revokeObjectURL(url);
         }
       }, 'image/jpeg', 0.95);
-    } catch (error) => {
+    } catch (error) {
       console.error('Download failed:', error);
       alert('Failed to download image. Please try again.');
     }
